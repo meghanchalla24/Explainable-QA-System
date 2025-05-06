@@ -10,9 +10,25 @@ This project is an explainable question-answering (QA) system designed to help u
 - Streamlit-based interactive interface.
 
 ## Installation
-Make sure you have Python installed. Then clone the repo and install dependencies:
+### 1. Clone the repository
+```bash
+git clone https://github.com/meghanchalla24/Explainable-QA-System.git
+cd Explainable-QA-System
+```
 
+### 2. Create a Virtual Environment
+# For Windows
+python -m venv venv
+venv\Scripts\activate
+
+# For macOS/Linux
+python3 -m venv venv
+source venv/bin/activate
+
+
+### 3. Install Dependencies
 pip install -r requirements.txt
+
 
 ## Usage
 Run the following command to launch the Streamlit interface:
