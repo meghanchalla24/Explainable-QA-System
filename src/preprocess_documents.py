@@ -7,7 +7,7 @@ from nltk.stem import WordNetLemmatizer
 import difflib
 
 
-def data_clean(input_file="final_corrected_extracted_data.json"):
+def data_clean(input_file=r"D:\Information_retrieval_project\data\processed\final_corrected_extracted_data.json"):
     # Load the extracted JSON data
     output_file = "cleaned_extracted_data.json"
 
@@ -63,7 +63,7 @@ def data_clean(input_file="final_corrected_extracted_data.json"):
 
 
 
-def spell_correction(input_file="extracted_data_with_links.json"):
+def spell_correction(input_file=r"D:\Information_retrieval_project\data\raw\raw_json\extracted_data_with_links.json"):
     with open(input_file, "r", encoding="utf-8") as file:
         extracted_details = json.load(file)
         

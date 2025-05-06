@@ -5,17 +5,17 @@ from document_retrieval import hybrid_retrieve,reranking
 
 from documents_statistics import get_statistics
 
-from boolean_retrieval import build_inverted_index,evaluate_query
+
 import json
 import time
 
 import os
-os.environ["TOGETHER_API_KEY"] = "ce142861c7d89ac010c16d12d7da1ca855a95f7cb4bc405d799c8dcca06a40b5"
+os.environ["TOGETHER_API_KEY"] = "410dde8215d41aae1af97f1c1424c6d32e2b0bb3accc1b6b2d700bdb0e2cb830"
 
 
 # Sidebar for navigation
 st.sidebar.title("Navigation")
-tab = st.sidebar.radio("Select a tab", ("Query Search", "View Statistics", "View Plots","Boolean Retrieval"))
+tab = st.sidebar.radio("Select a tab", ("Query Search", "View Statistics", "View Plots"))
 
 
 # Content for Tab 1
@@ -64,10 +64,10 @@ if tab == "Query Search":
 
 elif tab == "View Statistics":
     st.title("Document Statistics Before Prepocessing")
-    get_statistics("extracted_data_with_links.json")
+    get_statistics(r"D:\Information_retrieval_project\data\raw\raw_json\extracted_data_with_links.json")
 
     st.title("Document Statistics After Prepocessing")
-    get_statistics("cleaned_extracted_data.json")
+    get_statistics(r"D:\Information_retrieval_project\data\processed\cleaned_extracted_data.json")
 
 elif tab=="View Plots":
     display_BertRecallScore_Plot()
@@ -81,30 +81,4 @@ elif tab=="View Plots":
     plot_rouge_vs_length()
     plot_bleu()
 
-elif tab == "Boolean Retrieval":
-    st.title("Boolean Retrieval over Institute Regulations")
-
-    # Load cleaned PDF data
-    with open("cleaned_extracted_data.json", "r", encoding="utf-8") as f:
-        pdf_data = json.load(f)
-
-    # Build inverted index
-    inverted_index, all_doc_ids = build_inverted_index(pdf_data)
-
-    # Input query
-    query = st.text_input("Enter Boolean Query (e.g., fellowship AND NOT regulation)")
-
-    if st.button("Search"):
-        if not query.strip():
-            st.warning("Please enter a valid query.")
-        else:
-            results = evaluate_query(query, inverted_index, all_doc_ids)
-
-            if not results:
-                st.warning("No results found for this query.")
-            else:
-                st.success(f"Found {len(results)} matching pages.")
-                for pdf_file, page_num in results:
-                    link = pdf_data.get(pdf_file, {}).get("source_link", "Link not available")
-                    st.markdown(f"**{pdf_file} - Page {page_num}**  \n[🔗 Source Link]({link})", unsafe_allow_html=True)
 

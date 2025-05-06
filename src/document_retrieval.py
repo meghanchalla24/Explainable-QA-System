@@ -19,7 +19,7 @@ def minimal_clean(text):
     text = re.sub(r"\s+", " ", text)
     return text.strip()
 
-with open("final_corrected_extracted_data.json", "r", encoding="utf-8") as file:
+with open(r"D:\Information_retrieval_project\data\processed\final_corrected_extracted_data.json", "r", encoding="utf-8") as file:
     corpus = json.load(file)
 
 dense_pages, dense_page_metadata = [], {}
@@ -46,7 +46,7 @@ dense_index = faiss.IndexFlatIP(page_embeddings.shape[1])
 dense_index.add(page_embeddings)
 
 # --- Hybrid Retrieval ---
-def hybrid_retrieve(query, cleaned_extracted_data="cleaned_extracted_data.json"):
+def hybrid_retrieve(query, cleaned_extracted_data=r"D:\Information_retrieval_project\data\processed\cleaned_extracted_data.json"):
 
     with open(cleaned_extracted_data, "r", encoding="utf-8") as file:
         corpus = json.load(file)

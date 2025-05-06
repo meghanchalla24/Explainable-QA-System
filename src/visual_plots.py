@@ -32,10 +32,10 @@ nltk.download('punkt')
 
 
 # Load the updated JSON file
-with open("bert_scores.json", "r") as f:
+with open(r"D:\Information_retrieval_project\data\output\bert_scores.json", "r") as f:
     bert_scores = json.load(f)
 
-with open('testset_with_generated.json', 'r', encoding='utf-8') as f:
+with open(r"D:\Information_retrieval_project\data\processed\testset_with_generated.json", 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 f1_scores = bert_scores["f1"]

@@ -53,7 +53,7 @@ def extract_text_from_image(image_path):
         return ""
 
 
-def process_files(pdf_folder=r"D:\Information_retrieval_project\project_pdfs", output_file="extracted_data_with_links.json", links_output_file="pdf_links.txt"):
+def process_files(pdf_folder=r"D:\Information_retrieval_project\data\raw\corpus_pdfs", output_file="extracted_data_with_links.json", links_output_file="pdf_links.txt"):
     """Process all PDF and image files in a folder, extract text, and save to JSON and text files."""
     if not os.path.exists(pdf_folder):
         print(f"Error: The folder '{pdf_folder}' does not exist.")
