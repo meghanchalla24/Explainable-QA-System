@@ -39,31 +39,41 @@ pip install -r requirements.txt
 
 ## Usage
 Run the following command to launch the Streamlit interface:
-
+```bash
 python main.py
+```
 
 ## Project Structure
+### main.py
+This is the entry point to the application. The file provides options (tabs) to be displayed when hosted via a streamlit interface. One tab is for viewing the statistics of the corpus before and after preprocessing, one tab for viewing the plots of various scores so as to evaluate application performance, one tab for querying. 
 
-- main.py                  # Entry point for launching the Streamlit app
-- requirements.txt         # Required Python packages
-- project_pdfs/            # Folder with source documents (not only PDFs)
-- prepare_corpus.py        # Builds corpus; customizable paths and URLs
-- document_statistics.py   # Corpus metadata and statistics
-- document_retrieval.py    # Hybrid retrieval and reranking logic
-- generator.py             # Answer generation using LLaMA model
-- visual_plots.py          # Contains plots as per metrics evaluation
-- boolean_retrieval.py     # Check boolean retrieval
+### prepare_corpus.py and preprocess_documents.py
+This file is specifically for preparing the corpus. If you wish to create a different corpus or make any changes to the original documents (documents used other than the actual uploaded documents), execute the following code snippet:
+```bash
+from prepare_corpus import process_files
+from preprocess_documents import data_clean,spell_correction
 
-## Corpus
-By default, the corpus is built from the project_pdfs/ folder.
-To use your own dataset:
+pdf_folder = r"D:\Information_retrieval_project\project_pdfs" # replace with the actual location of your document folder
+initial_preprocessed_files = process_files(pdf_folder) # this will create a json file with initial extracted details from documents
+final_corrected_extracted_data = spell_correction(initial_preprocessed_files) # this creates a json file after applying spelling correction
+cleaned_extracted_data = data_clean(final_corrected_extracted_data) # this creates a json file after data cleaning and normalization
+```
+Now we have all our json files ready which we would be using in further retrieval tasks. A sample structure has been mention in data/processed, where there are three json files used already for the project. Also update the url links in the 'prepare_corpus.py file', where there is a dictionary defined for custom urls. 
 
-Update the folder path in prepare_corpus.py.
+### document_statistics.py
+This file contains function for calculating the statistics of the coprus. This function has been invoked in the main.py file under the "View Statistics" tab.
 
-Optionally modify the list of base URLs in the same file.
+### document_retrieval.py
+This file contains the functions for performing hybrid retrieval and reranking. This wont be used explicitly unless you want to modify the functions as per your need. 
 
-## Model Used
-Generator: meta-llama/Llama-4-Scout-17B-16E-Instruct
+### generator.py 
+This file is for getting responses from the language model (meta-llama/Llama-4-Scout-17B-16E-Instruct) from the retrieved text
+
+### visual_plots.py
+This file is used for evaluating the metrics and for respective plotting of these metrics
+
+**Note** : Try to use absolute paths over relative paths wherever necessary
+
 
 ## Author
 Meghan Challa
