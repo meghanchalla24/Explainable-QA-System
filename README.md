@@ -60,7 +60,7 @@ cleaned_extracted_data = data_clean(final_corrected_extracted_data) # this creat
 ```
 Now we have all our json files ready which we would be using in further retrieval tasks. A sample structure has been mention in data/processed, where there are three json files used already for the project. Also update the url links in the 'prepare_corpus.py file', where there is a dictionary defined for custom urls. 
 
-### document_statistics.py
+### documents_statistics.py
 This file contains function for calculating the statistics of the coprus. This function has been invoked in the main.py file under the "View Statistics" tab.
 
 ### document_retrieval.py
