@@ -38,9 +38,12 @@ pip install -r requirements.txt
 
 
 ## Usage
-Run the following command to launch the Streamlit interface:
+Run the following commands after activating your virtual environment to launch the Streamlit interface:
 ```bash
 python main.py
+```
+```bash
+streamlit run main.py
 ```
 
 ## Project Structure
