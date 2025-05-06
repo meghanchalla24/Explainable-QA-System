@@ -17,11 +17,11 @@ cd Explainable-QA-System
 ```
 
 ### 2. Create a Virtual Environment
-# For Windows
+#### For Windows
 python -m venv venv
 venv\Scripts\activate
 
-# For macOS/Linux
+#### For macOS/Linux
 python3 -m venv venv
 source venv/bin/activate
 
