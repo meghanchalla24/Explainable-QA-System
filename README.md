@@ -79,7 +79,7 @@ This file is for getting responses from the language model (meta-llama/Llama-4-S
 ### visual_plots.py
 This file is used for evaluating the metrics and for respective plotting of these metrics
 
-**Note** : Try to use absolute paths over relative paths wherever necessary
+**Note** : Keep updating paths wherever necessary
 
 
 ## Author
