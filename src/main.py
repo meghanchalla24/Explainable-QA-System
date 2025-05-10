@@ -35,7 +35,8 @@ if tab == "Query Search":
             st.warning("⚠️ Please enter a query before running.")
         else:
             with st.spinner("Retrieving documents..."):
-                hybrid_results = hybrid_retrieve(query)
+                hybrid_results = hybrid_retrieve(query) # either change the default file location in the 'hybrid_retrieve' function or pass on your desired file location as an extra parameter
+                
                 time.sleep(1)  # optional artificial delay
 
             with st.spinner("Reranking retrieved documents..."):
