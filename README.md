@@ -51,7 +51,7 @@ streamlit run main.py
 This is the entry point to the application. The file provides options (tabs) to be displayed when hosted via a streamlit interface. One tab is for viewing the statistics of the corpus before and after preprocessing, one tab for viewing the plots of various scores so as to evaluate application performance, one tab for querying. 
 
 ### prepare_corpus.py and preprocess_documents.py
-This file is specifically for preparing the corpus. If you wish to create a different corpus or make any changes to the original documents (documents used other than the actual uploaded documents), execute the following code snippet:
+These files are specifically for preparing the corpus. If you wish to create a different corpus or make any changes to the original documents (documents used other than the actual uploaded documents), execute the following code snippet (make sure the file in which you run the code is in src):
 ```bash
 from prepare_corpus import process_files
 from preprocess_documents import data_clean,spell_correction
