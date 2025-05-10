@@ -64,10 +64,10 @@ if tab == "Query Search":
 
 elif tab == "View Statistics":
     st.title("Document Statistics Before Prepocessing")
-    get_statistics(r"D:\Information_retrieval_project\data\raw\raw_json\extracted_data_with_links.json")
+    get_statistics(r"D:\Information_retrieval_project\data\raw\raw_json\extracted_data_with_links.json") # change your path accordingly
 
     st.title("Document Statistics After Prepocessing")
-    get_statistics(r"D:\Information_retrieval_project\data\processed\cleaned_extracted_data.json")
+    get_statistics(r"D:\Information_retrieval_project\data\processed\cleaned_extracted_data.json") # change your path accordingly
 
 elif tab=="View Plots":
     display_BertRecallScore_Plot()
