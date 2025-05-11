@@ -348,15 +348,22 @@ def plot_rouge_vs_length():
 bleu_scores = []
 smoothing = SmoothingFunction().method1
 
-for item in data:
-    reference = [nltk.word_tokenize(item['answer'])]
-    candidate = nltk.word_tokenize(item['generated_answer'])
-    
-    score = sentence_bleu(reference, candidate, smoothing_function=smoothing)
-    bleu_scores.append(score)
+def compute_bleu_scores(data):
+    nltk.download('punkt')
+    smoothing = SmoothingFunction().method1
+    bleu_scores = []
+
+    for item in data:
+        reference = [nltk.word_tokenize(item['answer'])]
+        candidate = nltk.word_tokenize(item['generated_answer'])
+        score = sentence_bleu(reference, candidate, smoothing_function=smoothing)
+        bleu_scores.append(score)
+
+    return bleu_scores
 
 
 def plot_bleu():
+    bleu_scores = compute_bleu_scores(data)
     # Ground Truth Answer Lengths
     st.title("BLEU Score vs Ground Truth Answer Length")
     ref_lengths = [len(item['answer'].split()) for item in data]
