@@ -7,8 +7,23 @@ import numpy as np
 import json
 import re
 from rerankers import Reranker
+import os
 
-nltk.download('punkt')
+# ===== NLTK SETUP - MUST COME BEFORE ANY TOKENIZATION =====
+# Set NLTK data path to a writable directory in Streamlit Cloud
+NLTK_DATA_PATH = os.path.join(os.getcwd(), 'nltk_data')
+os.makedirs(NLTK_DATA_PATH, exist_ok=True)
+nltk.data.path.append(NLTK_DATA_PATH)
+
+# Download punkt with error handling
+try:
+    nltk.data.find('tokenizers/punkt')
+except LookupError:
+    nltk.download('punkt', download_dir=NLTK_DATA_PATH)
+    nltk.data.path.append(NLTK_DATA_PATH)  # Refresh path after download
+
+# Verify punkt is available
+assert nltk.data.find('tokenizers/punkt'), "NLTK punkt tokenizer not available!"
 
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
