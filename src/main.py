@@ -3,20 +3,25 @@ import sys
 from nltk.data import find
 sys.path.append(os.path.dirname(__file__)) 
 
+NLTK_DATA_DIR = os.path.join(os.path.dirname(__file__), "nltk_data")
+os.makedirs(NLTK_DATA_DIR, exist_ok=True)
+nltk.data.path.append(NLTK_DATA_DIR)
+
+# Download punkt only if not already present
 def ensure_punkt():
     try:
         find('tokenizers/punkt')
-        print("Punkt is already available.")
+        print("✅ 'punkt' is already available.")
     except LookupError:
-        print("Downloading 'punkt' tokenizer...")
-        nltk.download('punkt')
+        print("⏳ Downloading 'punkt'...")
+        nltk.download('punkt', download_dir=NLTK_DATA_DIR)
         try:
             find('tokenizers/punkt')
+            print("✅ 'punkt' successfully downloaded.")
         except LookupError:
-            print("Download failed. Exiting.")
+            print("❌ Download failed. Exiting.")
             sys.exit(1)
 
-# Ensure punkt is available before doing anything else
 ensure_punkt()
 import streamlit as st
 from visual_plots import display_BertRecallScore_Plot,display_BertF1Score_Plot,display_BertPrecisionScore_Plot,kdeplot,boxplot_metrics,plot_bertscore_all,plot_rogue,boxplot_rogue,plot_rouge_vs_length,plot_bleu
