@@ -8,7 +8,7 @@ import json
 import re
 from rerankers import Reranker
 
-nltk.download('punkt')
+nltk.download('punkt_tab')
 
 model = SentenceTransformer('sentence-transformers/all-MiniLM-L6-v2')
 
