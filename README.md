@@ -79,8 +79,7 @@ This file is for getting responses from the language model (meta-llama/Llama-4-S
 ### visual_plots.py
 This file is used for evaluating the metrics and for respective plotting of these metrics
 
-**Note** : Keep updating paths wherever necessary
-
+**Note** : Streamlit Cloud runs on Linux, so paths have been mentioned as per linux style. Keep updating paths as per the system requirement while running locally
 
 ## Author
 Meghan Challa
