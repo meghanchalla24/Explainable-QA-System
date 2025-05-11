@@ -8,7 +8,6 @@ import nltk
 from rouge_score import rouge_scorer
 from nltk.translate.bleu_score import sentence_bleu, SmoothingFunction
 
-nltk.download('punkt')
 
 
 """The below function stores the bert scores in a json file. We dont want to run it again and again so run once and save the scores"""
