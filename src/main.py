@@ -1,4 +1,6 @@
-
+import os
+import sys
+sys.path.append(os.path.dirname(__file__))  
 import nltk
 nltk.download('punkt')
 import streamlit as st
@@ -15,7 +17,6 @@ nltk.download('punkt')
 import json
 import time
 
-import os
 os.environ["TOGETHER_API_KEY"] = "410dde8215d41aae1af97f1c1424c6d32e2b0bb3accc1b6b2d700bdb0e2cb830"
 
 
