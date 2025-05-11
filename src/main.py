@@ -62,7 +62,7 @@ if tab == "Query Search":
                 st.markdown(f"**{rank}.** {doc_data['document_name']} - Page {doc_data['page_number']}")
                 #(Score: {doc_data['rerank_score']:.4f})
                 st.markdown(f"   📄 Source: {doc_data['source_link']}")
-                # st.markdown(f"   📂 Local Path: {doc_data['local_link']}") -- > this is helpful when running on local host
+                #st.markdown(f"   📂 Local Path: {doc_data['local_link']}") -- > this is helpful when running on local host
                 st.markdown(f"   📝 Excerpt: {doc_data['text'][:300]}...")  # Excerpt first 300 characters (or adjust as needed)
                 st.markdown("___")
 
