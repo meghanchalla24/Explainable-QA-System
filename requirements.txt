@@ -2,6 +2,7 @@ sentence-transformers>=2.2.2
 rank-bm25>=0.2.2
 nltk>=3.8.1
 faiss-cpu>=1.7.4
+rerankers[flashrank]
 numpy>=1.23.5
 pandas>=1.5.3
 streamlit>=1.24.0
