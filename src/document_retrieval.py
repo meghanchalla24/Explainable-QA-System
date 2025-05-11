@@ -19,7 +19,7 @@ def minimal_clean(text):
     text = re.sub(r"\s+", " ", text)
     return text.strip()
 
-with open(r"data\processed\final_corrected_extracted_data.json", "r", encoding="utf-8") as file: # change your path accordingly
+with open(r"data/processed/final_corrected_extracted_data.json", "r", encoding="utf-8") as file: # change your path accordingly
     corpus = json.load(file)
 
 dense_pages, dense_page_metadata = [], {}
