@@ -1,7 +1,6 @@
 import os
 import sys
 import nltk
-nltk.download('punkt')
 sys.path.append(os.path.dirname(__file__)) 
 import streamlit as st
 from visual_plots import display_BertRecallScore_Plot,display_BertF1Score_Plot,display_BertPrecisionScore_Plot,kdeplot,boxplot_metrics,plot_bertscore_all,plot_rogue,boxplot_rogue,plot_rouge_vs_length,plot_bleu
