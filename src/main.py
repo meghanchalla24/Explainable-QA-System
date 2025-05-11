@@ -55,7 +55,7 @@ if tab == "Query Search":
             st.write(final_answer)
 
             st.markdown("---")
-            st.subheader("📚 References")
+            st.subheader("📚 Referencessss")
             
             # Displaying document details in the reference section
             for rank, (doc_id, doc_data) in enumerate(list(reranked_results.items())[:5], start=1):
