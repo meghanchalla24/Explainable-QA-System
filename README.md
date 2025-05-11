@@ -35,7 +35,7 @@ source venv/bin/activate
 ```bash
 pip install -r requirements.txt
 ```
-Additionally, run the following command to download the lightweight reranker model locally:
+Additionally, run the following command to download the lightweight reranker model locally (if not downloaded):
 ```bash
 pip install "rerankers[flashrank]"
 ```
