@@ -1,4 +1,6 @@
 import streamlit as st
+import nltk
+nltk.download('punkt')
 from visual_plots import display_BertRecallScore_Plot,display_BertF1Score_Plot,display_BertPrecisionScore_Plot,kdeplot,boxplot_metrics,plot_bertscore_all,plot_rogue,boxplot_rogue,plot_rouge_vs_length,plot_bleu
 from generator import generate_answer
 from document_retrieval import hybrid_retrieve,reranking
