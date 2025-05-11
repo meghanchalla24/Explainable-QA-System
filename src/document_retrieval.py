@@ -10,17 +10,32 @@ from rerankers import Reranker
 import os
 
 # ===== NLTK SETUP - MUST COME BEFORE ANY TOKENIZATION =====
-# Set NLTK data path to a writable directory in Streamlit Cloud
-NLTK_DATA_PATH = os.path.join(os.getcwd(), 'nltk_data')
-os.makedirs(NLTK_DATA_PATH, exist_ok=True)
-nltk.data.path.append(NLTK_DATA_PATH)
+def initialize_nltk():
+    # Set paths for Streamlit Cloud
+    nltk_data_path = os.path.join(os.getcwd(), 'nltk_data')
+    os.makedirs(nltk_data_path, exist_ok=True)
+    
+    # Set NLTK data path
+    nltk.data.path.append(nltk_data_path)
+    
+    # Download punkt with retries
+    max_retries = 3
+    for i in range(max_retries):
+        try:
+            nltk.data.find('tokenizers/punkt')
+            break
+        except LookupError:
+            try:
+                nltk.download('punkt', download_dir=nltk_data_path)
+                # Refresh nltk.data.path after download
+                nltk.data.path.append(nltk_data_path)
+            except Exception as e:
+                if i == max_retries - 1:
+                    raise RuntimeError(f"Failed to download NLTK data after {max_retries} attempts: {str(e)}")
+                continue
 
-# Download punkt with error handling
-try:
-    nltk.data.find('tokenizers/punkt')
-except LookupError:
-    nltk.download('punkt', download_dir=NLTK_DATA_PATH)
-    nltk.data.path.append(NLTK_DATA_PATH)  # Refresh path after download
+# Initialize NLTK at module level
+initialize_nltk()
 
 # Verify punkt is available
 assert nltk.data.find('tokenizers/punkt'), "NLTK punkt tokenizer not available!"
