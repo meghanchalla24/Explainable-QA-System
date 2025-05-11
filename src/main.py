@@ -5,6 +5,9 @@ from document_retrieval import hybrid_retrieve,reranking
 
 from documents_statistics import get_statistics
 
+import nltk
+nltk.download('punkt')
+
 
 import json
 import time
