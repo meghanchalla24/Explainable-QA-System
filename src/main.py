@@ -1,5 +1,6 @@
 import os
 import sys
+import nltk
 from nltk.data import find
 sys.path.append(os.path.dirname(__file__)) 
 
